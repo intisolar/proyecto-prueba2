@@ -1,2 +1,5 @@
-package com.exams.createexams.model.entities;public class User {
+package com.exams.createexams.model.entities;
+
+public class User {
+
 }
