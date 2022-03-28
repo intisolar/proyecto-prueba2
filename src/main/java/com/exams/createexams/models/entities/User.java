@@ -1,6 +1,7 @@
 package com.exams.createexams.models.entities;
 
-import java.security.Timestamp;
+
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -52,6 +54,7 @@ public class User implements UserDetails {
 
 
   @Column(name = "TIMESTAMP", nullable = false)
+  @CreationTimestamp
   private Timestamp timestamp;
 
   @Column(name = "SOFT_DELETE")

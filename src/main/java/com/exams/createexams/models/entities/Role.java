@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Table(name = "ROLES")
 @Entity
@@ -28,6 +29,7 @@ public class Role {
   private String description;
 
   @Column(name = "TIMESTAMP")
+  @CreationTimestamp
   private Timestamp timestamp;
 
 }
