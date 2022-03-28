@@ -1,6 +1,6 @@
 package com.exams.createexams.common;
 
-import com.exams.createexams.model.entities.User;
+import com.exams.createexams.models.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

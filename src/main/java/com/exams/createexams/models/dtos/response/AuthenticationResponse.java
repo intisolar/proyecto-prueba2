@@ -1,4 +1,4 @@
-package com.exams.createexams.model.dtos.response;
+package com.exams.createexams.models.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
