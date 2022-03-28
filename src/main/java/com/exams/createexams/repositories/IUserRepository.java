@@ -10,6 +10,6 @@ public interface IUserRepository extends JpaRepository<User, String> {
 
     User findByEmail(String email);
 
-    List<User> findBySoftDeleteFalse();
+    List<User> findBySoftDeleteFalseOrderByFirstName();
 
 }

@@ -71,7 +71,7 @@ public class UserService implements UserDetailsService, ILogin, IGetUserDetails 
 
     @Override
     public ListUserResponse findActiveUsers() {
-        List<User> users = userRepository.findBySoftDeleteFalse();
+        List<User> users = userRepository.findBySoftDeleteFalseOrderByFirstName();
         return buildListResponse(users);
     }
 }
