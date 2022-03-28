@@ -1,4 +1,4 @@
-package com.exams.createexams.model.dtos.requests;
+package com.exams.createexams.models.dtos.requests;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

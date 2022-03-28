@@ -1,4 +1,4 @@
-package com.exams.createexams.model.entities;
+package com.exams.createexams.models.entities;
 
 import java.sql.Timestamp;
 import javax.persistence.Column;
