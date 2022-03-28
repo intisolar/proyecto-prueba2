@@ -70,7 +70,7 @@ public class User implements UserDetails {
         return email;
     }
 
-    @Override
+    @Override //Las variables que no manejo las seteo a true para sacarlas del medio
     public boolean isAccountNonExpired() {
         return true;
     }
