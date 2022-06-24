@@ -1,6 +1,6 @@
 package com.exams.createexams.seeders;
 
-import com.exams.createexams.config.security.RoleType;
+import com.exams.createexams.common.enums.RoleType;
 import com.exams.createexams.models.entities.Role;
 import com.exams.createexams.repositories.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
