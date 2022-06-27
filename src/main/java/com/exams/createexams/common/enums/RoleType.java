@@ -1,4 +1,4 @@
-package com.exams.createexams.config.security;
+package com.exams.createexams.common.enums;
 
 public enum RoleType {
 
