@@ -51,13 +51,12 @@ public class Course {
     @JoinColumn(name = "SUBJECT_ID")
     private Subject subject;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY) //Files can exist independently.
     @JoinTable(name = "COURSE_FILES",
     joinColumns = @JoinColumn(name = "COURSE_ID", nullable = false),
     inverseJoinColumns = @JoinColumn(name = "FILE_ID"))
     private List<File> files;
 
-    //Lista de precios para llevar un registro de los valores? REVISARR!!!!!!
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "COURSE_PRICES",
         joinColumns = @JoinColumn(name = "COURSE_ID"),
