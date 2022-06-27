@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -52,15 +51,17 @@ public class Course {
     @JoinColumn(name = "SUBJECT_ID")
     private Subject subject;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "COURSE_FILES",
     joinColumns = @JoinColumn(name = "COURSE_ID", nullable = false),
     inverseJoinColumns = @JoinColumn(name = "FILE_ID"))
     private List<File> files;
 
     //Lista de precios para llevar un registro de los valores? REVISARR!!!!!!
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "PRICE_ID")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "COURSE_PRICES",
+        joinColumns = @JoinColumn(name = "COURSE_ID"),
+        inverseJoinColumns = @JoinColumn(name="PRICE_ID"))
     private List<Price> prices;
 
     @Column(name = "PAYMENT_TYPE")
