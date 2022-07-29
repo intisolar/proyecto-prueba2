@@ -38,7 +38,7 @@ public class Student {
     private User user;
 
     @Column(name = "COURSE_ID")
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany( fetch = FetchType.LAZY)
     private List<Course> courses;
 
     @Column(name = "TIMESTAMP", nullable = false)
