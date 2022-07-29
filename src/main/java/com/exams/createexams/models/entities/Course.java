@@ -59,6 +59,10 @@ public class Course {
     inverseJoinColumns = @JoinColumn(name = "FILE_ID"))
     private List<File> files;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UNIT_ID")
+    private List<Unit> units;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "COURSE_PRICES",
         joinColumns = @JoinColumn(name = "COURSE_ID"),
