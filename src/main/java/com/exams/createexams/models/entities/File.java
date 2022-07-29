@@ -1,5 +1,6 @@
 package com.exams.createexams.models.entities;
 
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -30,6 +32,11 @@ public class File {
 
     @Column(name = "URL")
     private String url;
+
+    @Column(name = "TIMESTAMP", nullable = false)
+    @CreationTimestamp
+    private Timestamp timestamps;
+
 
     @Column(name = "SOFT_DELETE")
     private Boolean softDelete;

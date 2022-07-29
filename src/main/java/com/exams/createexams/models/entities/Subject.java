@@ -1,5 +1,6 @@
 package com.exams.createexams.models.entities;
 
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Getter
 @Setter
@@ -26,4 +28,9 @@ public class Subject {
 
     @Column(name = "NAME", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "TIMESTAMP", nullable = false)
+    @CreationTimestamp
+    private Timestamp timestamps;
+
 }

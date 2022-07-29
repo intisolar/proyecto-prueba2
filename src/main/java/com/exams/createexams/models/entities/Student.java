@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -37,9 +38,14 @@ public class Student {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
-    @Column(name = "COURSE_ID")
-    @ManyToMany( fetch = FetchType.LAZY)
-    private List<Course> courses;
+    /*Instead of having courses students have progress. Progress saves the course*/
+    @Column(name = "PROGRESS_ID")
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Progress> coursesProgress;
+
+    @Column(name = "PAYMENT_ID")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="student")
+    private List<Payment> payments;
 
     @Column(name = "TIMESTAMP", nullable = false)
     @CreationTimestamp
