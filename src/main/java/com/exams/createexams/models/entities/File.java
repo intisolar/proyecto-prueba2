@@ -25,9 +25,12 @@ public class File {
     @Column(name = "FILE_ID", nullable = false, unique = true)
     private String fileId;
 
+    @Column(name = "NAME")
     private String name;
 
-    private String link;
+    @Column(name = "URL")
+    private String url;
 
+    @Column(name = "SOFT_DELETE")
     private Boolean softDelete;
 }
