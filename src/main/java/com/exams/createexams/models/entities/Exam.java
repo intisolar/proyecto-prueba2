@@ -16,6 +16,7 @@ import lombok.Setter;
 @Table(name = "EXAMS")
 public class Exam extends ExamTemplate{
 
+  /*Puntaje final de los alumnos*/
   @Column(name = "FINAL_SCORE")
   private Float finalScore;
 }
