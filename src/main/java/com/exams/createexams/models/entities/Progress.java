@@ -24,12 +24,16 @@ public class Progress {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "PROGRESS_ID", nullable = false, unique = true)
   private Long progressID;
+
   @Column(name = "STUDENTS")
   private Student student;
+
   @Column(name = "COURSES")
   private Course course;
+
   @Column(name = "EXAMS")
   private List<Exam> exams;
+
   @Column(name = "PROGRESS_PERCENTAGE")
   private Float progressPercentage;
 
