@@ -34,7 +34,7 @@ public class Student {
     private String studentId;
 
     @JoinColumn(name = "USER_ID")
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
     @Column(name = "COURSE_ID")
