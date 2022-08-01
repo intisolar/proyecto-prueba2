@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,8 +36,12 @@ public class Student {
     private String studentId;
 
     @JoinColumn(name = "USER_ID")
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private User user;
+
+    @Column(name = "NAME")
+    @Setter(AccessLevel.NONE)
+    private String name;
 
     /*Instead of having courses students have progress. Progress saves the course*/
     @Column(name = "PROGRESS_ID")
@@ -55,4 +60,7 @@ public class Student {
     private boolean softDelete;
 
 
+    public void setName() {
+        this.name = user.getFirstName()+" "+ user.getLastName();
+    }
 }

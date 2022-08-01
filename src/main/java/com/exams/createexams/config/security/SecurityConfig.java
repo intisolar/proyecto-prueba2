@@ -58,6 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers(HttpMethod.GET, "/users")
             .permitAll() //Setear esta configuración solo admins y además setear login
+            .antMatchers("/students")
+            .permitAll()
+            .antMatchers("/students/active")
+            .permitAll()
             .anyRequest()
             .authenticated()
             .and()
