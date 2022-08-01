@@ -13,24 +13,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SUBJECTS")
-public class Subject {
+@Table(name = "EXAM_TEMPLATES")
+public class ExamTemplate {
 
-    @Id
-    @Column(name = "SUBJECT_ID", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "EXAM_TEMPLATE_ID", nullable = false, unique = true)
+  private Integer examTemplateId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
-    private String name;
+  @Column(name = "SCORE")
+  private Integer score;
 
-    @Column(name = "TIMESTAMP", nullable = false)
-    @CreationTimestamp
-    private Timestamp timestamps;
+  @Column(name = "SOFT_DELETE")
+  private Boolean softDelete;
+
+  @Column(name = "TIMESTAMP", nullable = false)
+  @CreationTimestamp
+  private Timestamp timestamps;
 
 }

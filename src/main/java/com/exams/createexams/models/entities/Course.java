@@ -1,5 +1,6 @@
 package com.exams.createexams.models.entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -57,12 +59,17 @@ public class Course {
     inverseJoinColumns = @JoinColumn(name = "FILE_ID"))
     private List<File> files;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UNIT_ID")
+    private List<Unit> units;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "COURSE_PRICES",
         joinColumns = @JoinColumn(name = "COURSE_ID"),
         inverseJoinColumns = @JoinColumn(name="PRICE_ID"))
     private List<Price> prices;
 
+    /* Enum PaymentType */
     @Column(name = "PAYMENT_TYPE")
     private String paymentType;
 
@@ -71,6 +78,11 @@ public class Course {
 
     @Column(name = "END_DATE")
     private Date endDate;
+
+    @Column(name = "TIMESTAMP", nullable = false)
+    @CreationTimestamp
+    private Timestamp timestamps;
+
 
     @Column(name = "SOFT_DELETE")
     private boolean softDelete;

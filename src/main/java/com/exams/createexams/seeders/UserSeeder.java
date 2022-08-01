@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +20,11 @@ public class UserSeeder implements CommandLineRunner {
     private static final List<String> LAST_NAMES_ADMIN = List.of("Garcia");
     private static final List<String> EMAILS_ADMIN = List.of("insolgar@gmail.com");
     private static final List<String> PASSWORDS_ADMIN = List.of("admin2022");
-    private static final List<String> NAMES_USER = List.of("María", "John");
-    private static final List<String> LAST_NAMES_USER = List.of("Nadie", "Smith");
+    private static final List<String> NAMES_USER = List.of("María", "John", "Sarah", "Ryan");
+    private static final List<String> LAST_NAMES_USER = List.of("Nadie", "Smith", "Barella", "Tipo");
     private static final List<String> EMAILS_USER = List.of("marianadie@gmail.com",
-        "johnsmith@gmail.com");
-    private static final List<String> PASSWORDS_USER = List.of("1234567", "7654321");
+        "johnsmith@gmail.com", "sari_ba@gmail.com", "tiporyo@gmail.com");
+    private static final List<String> PASSWORDS_USER = List.of("1234567", "7654321", "1234567","7654321");
 
     @Autowired
     private IUserRepository userRepository;
@@ -35,6 +36,7 @@ public class UserSeeder implements CommandLineRunner {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
+    @Order(2)
     public void run(String... args) throws Exception {  seedUserTable();  }
 
     private void seedUserTable() {
