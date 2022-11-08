@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,12 +36,21 @@ public class Student {
     private String studentId;
 
     @JoinColumn(name = "USER_ID")
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private User user;
 
-    @Column(name = "COURSE_ID")
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<Course> courses;
+    @Column(name = "NAME")
+    @Setter(AccessLevel.NONE)
+    private String name;
+
+    /*Instead of having courses students have progress. Progress saves the course*/
+    @Column(name = "PROGRESS_ID")
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Progress> coursesProgress;
+
+    @Column(name = "PAYMENT_ID")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="student")
+    private List<Payment> payments;
 
     @Column(name = "TIMESTAMP", nullable = false)
     @CreationTimestamp
@@ -49,4 +60,7 @@ public class Student {
     private boolean softDelete;
 
 
+    public void setName() {
+        this.name = user.getFirstName()+" "+ user.getLastName();
+    }
 }

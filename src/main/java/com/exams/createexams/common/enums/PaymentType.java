@@ -1,4 +1,4 @@
-package com.exams.createexams.utils.enums;
+package com.exams.createexams.common.enums;
 
 public enum PaymentType {
     HOURLY("Hourly payment"),
