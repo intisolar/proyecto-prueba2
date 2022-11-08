@@ -1,6 +1,7 @@
 package com.exams.createexams.models.entities;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,28 +25,26 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "STUDENTS")
+@Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "STUDENT_ID", nullable = false, unique = true)
-    private String studentId;
+    @GeneratedValue
+    private Long id;
 
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private User user;
 
-    @Column(name = "COURSE_ID")
+    @Column(name = "course_id")
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Course> courses;
 
-    @Column(name = "TIMESTAMP", nullable = false)
+    @Column(name = "timestamp", nullable = false)
     @CreationTimestamp
-    private Timestamp timestamp;
+    private LocalDate date;
 
-    @Column(name = "SOFT_DELETE")
+    @Column(name = "soft_delete")
     private boolean softDelete;
 
 
